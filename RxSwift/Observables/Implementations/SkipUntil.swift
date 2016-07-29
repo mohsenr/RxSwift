@@ -103,7 +103,7 @@ class SkipUntilSink<ElementType, Other, O: ObserverType where O.E == ElementType
         _sourceSubscription.disposable = sourceSubscription
         otherObserver._subscription.disposable = otherSubscription
         
-        return StableCompositeDisposable.create(_sourceSubscription, otherObserver._subscription)
+        return BinaryDisposable(_sourceSubscription, otherObserver._subscription)
     }
 }
 
